@@ -48,29 +48,30 @@
 **
 ****************************************************************************/
 
-#include "glwidget.h"
-#include "window.h"
+#ifndef HELPER_H
+#define HELPER_H
 
-#include <QGridLayout>
-#include <QLabel>
-#include <QTimer>
+#include <QBrush>
+#include <QFont>
+#include <QPen>
+#include <QWidget>
 
-
-Window::Window()
+//! [0]
+class Helper
 {
-    setWindowTitle(tr("2D Painting on OpenGL Widgets"));
+public:
+    Helper();
 
-    GLWidget *openGL = new GLWidget(&helper, this);
-    QLabel *openGLLabel = new QLabel(tr("OpenGL"));
-    openGLLabel->setAlignment(Qt::AlignHCenter);
+public:
+    void paint(QPainter *painter, QPaintEvent *event, int elapsed);
 
-    QGridLayout *layout = new QGridLayout;
-    layout->addWidget(openGL, 0, 1);
-    layout->addWidget(openGLLabel, 1, 1);
-    setLayout(layout);
+private:
+    QBrush background;
+    QBrush circleBrush;
+    QFont textFont;
+    QPen circlePen;
+    QPen textPen;
+};
+//! [0]
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, openGL, &GLWidget::animate);
-    timer->start(50);
-}
-
+#endif
