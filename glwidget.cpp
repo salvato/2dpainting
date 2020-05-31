@@ -56,7 +56,8 @@
 
 
 GLWidget::GLWidget(Helper *helper, QWidget *parent)
-    : QOpenGLWidget(parent), helper(helper)
+    : QOpenGLWidget(parent)
+    , helper(helper)
 {
     elapsed = 0;
     setFixedSize(600, 600);

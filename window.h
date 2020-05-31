@@ -63,6 +63,9 @@ class Window : public QWidget
 public:
     Window();
 
+private slots:
+    void onQuitPushed();
+
 private:
     Helper helper;
 };
